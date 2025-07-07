@@ -10,6 +10,15 @@ console.log("Task 1\n");
     The remainder of 5 and 2 is = 1
     The exponentiation of 5 and 2 is 25
  */
+let str1 = "5", str2 = "2";
+console.log(`Expected results:`)
+console.log(`The sum of ${Number(str1)} and ${Number(str2)} is = ${Number(str1) + Number(str2)}`);
+console.log(`The product of ${Number(str1)} and ${Number(str2)} is = ${Number(str1) * Number(str2)}`);
+console.log(`The division of ${Number(str1)} and ${Number(str2)} is = ${Number(str1) / Number(str2)}`);
+console.log(`The subtraction of ${Number(str1)} and ${Number(str2)} is = ${Number(str1) - Number(str2)}`);
+console.log(`The remainder of ${Number(str1)} and ${Number(str2)} is = ${Number(str1) % Number(str2)}`);
+console.log(`The exponentiation of ${Number(str1)} and ${Number(str2)} is = ${Math.pow(Number(str1), Number(str2))}\n`);
+
 
 console.log("Task 2\n");
 /**
