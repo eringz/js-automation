@@ -1,4 +1,3 @@
-console.log("Task-1\n");
 /**
  * Write a program that generates 3 random numbers between 1 to 100 (1 and 100 are included)
  * Print true if the average of the random numbers is greater or equals 50.
@@ -12,8 +11,15 @@ console.log("Task-1\n");
  * Expected Output 2:
     true
  */
+console.log("Task-1\n");
+Array.from({length: 2}).forEach((_, index) => {
+   const randomNums = Array.from({length: 3}, () => Math.floor(Math.random() * 100 + 1));
+   const randomAverage = randomNums.reduce((x, y) => x + y) / randomNums.length
+   
+   console.log(`Test data ${index +1}:\n${randomNums.join(`, `)}\n`);
+   console.log(`Expected Output ${index+1}:\n${randomAverage >= 50 ? true : false}\n`);
+});
 
-console.log("Task-2\n");
 /**
  * Write a program that generates 3 random numbers between 1 to 3 (1 and 3 are included)
     - If all numbers are different, then print "NO MATCH"
@@ -36,8 +42,18 @@ console.log("Task-2\n");
  * Expected Output 4:
     DOUBLE MATCH
  */
+console.log("Task-2\n");
+Array.from({length: 3}).forEach((_, index) => {
+   randomNums =  Array.from({length: 3}, () => Math.floor(Math.random() * 3) + 1);
+   const [x, y, z] = randomNums;
+   const uniqueVal = new Set(randomNums).size
+   
+   console.log(`Test data ${index+1}:\n${randomNums.join(`, `)}\n`);
+   console.log(`Expected Output ${index+1}`)
+   console.log(`${uniqueVal === 1 ? `TRIPLE MATCH` : uniqueVal === 2 ? `DOUBLE MATCH` : `NO MATCH`}\n`);
+})
 
-console.log("Task-3\n");
+
 /**
  * Write a function named as hasA() which takes a string word as an argument and returns true 
     if given string ha a character "a" or "A", and false otherwise when invoked.
@@ -48,21 +64,39 @@ console.log("Task-3\n");
     hasA("")            -> false
     hasA("Apple")       -> true
  */
+console.log("Task-3\n");
 
+const hasA = word => {
+   return word.toLowerCase().includes("a");
+};
 
-console.log("Task-4\n");
+console.log("Examples:");
+
+let testWords = ["Tech", "Global", "", "Apple"];
+testWords.map(word => {console.log(`hasA("${word}") -> ${hasA(word)}`)});
+
 /**
  * Write a function names as doubleOrTripleWord() which takes a string word as an argument and returns the given word back 
     tripled if the string length is even or doubled if the string length is odd when invoked.
  * Examples:
-    doubleOrTripleWord("Tech")          -> "TechTechTech"
-    doubleOrTripleWord("Apple")         -> "AppleApple"
-    doubleOrTripleWord(" ")             -> " "
-    doubleOrTripleWord("1")             -> "11"
-    doubleOrTripleWord("22")            -> "222222"
+    doubleOrTripleWord("Tech")            -> "TechTechTech"
+    doubleOrTripleWord("Apple")           -> "AppleApple"
+    doubleOrTripleWord("")                -> ""
+    doubleOrTripleWord(" ")               -> " "
+    doubleOrTripleWord("1")               -> "11"
+    doubleOrTripleWord("22")              -> "222222"
  */
+console.log("\nTask-4\n");
 
-console.log("Task-5\n")
+const doubleOrTripleWord = word => {
+    return word.length % 2 === 0 ? word.repeat(3) : word.repeat(2);
+}
+
+console.log("Examples:");
+
+testWords = ["Tech", "Apple", "", " ", "1", "22"];
+testWords.map(word => {console.log(`doubleOrTripleWord("${word}") -> ${doubleOrTripleWord(word)}`)});
+
 /**
  * Write a function named as firstWord() which takes a string word as an argument and returns the first word from the given string when invoked.
  * NOTE: Return empty string if the given string does not have any word.
@@ -73,8 +107,18 @@ console.log("Task-5\n")
     firstWord("")                       -> ""
     firstWord(" ")                      -> ""
  */
+console.log("\nTask-5\n");
 
-console.log("Task-6\n");
+const firstWord = word => {
+   const splitWords = word.trim().split(" ");
+   return splitWords[0];
+}
+
+console.log("Examples:");
+
+testWords = ["Hello World", "I like JavaScript", "Hello", "", " "];
+testWords.map(word => {console.log(`firstWord("${word}") -> ${firstWord(word)}`)});
+
 /**
  * Write a function named as lastWord() which takes a string word as an argument and returns the last word from the given string when invoked.
  * NOTE: Return empty string if the given string does not have any word.
@@ -85,8 +129,9 @@ console.log("Task-6\n");
     lastWord("")                        -> ""
     lastWord(" ")                       -> ""
  */
+console.log("\nTask-6\n");
 
-console.log("Task-7\n");
+
 /**
  * Write a function named as firstlastWord() which takes a string word as an argument and returns the first and last words from the given string when invoked.
  * NOTE: Return empty string if the given string does not have any word.
@@ -97,8 +142,9 @@ console.log("Task-7\n");
     firstLastWord("")                   -> ""
     firstLastWord(" ")                  -> ""
  */
+console.log("Task-7\n");
 
-console.log("Task-8\n");
+
 /**
  * Write a function names as startVowel() which takes a string word as an argument and returns true if given string starts with a vowel, and false otherwise when invoked.
  * NOTE: Vowel letters: a, e, i, o, u, A, E, I, O, U
@@ -110,8 +156,9 @@ console.log("Task-8\n");
     startVowel(" ")                     -> false
     startVowel("123")                   -> false
  */
+console.log("Task-8\n");
 
-console.log("Task-9\n");
+
 /**
  * Write a function names as swap4() which takes a string word as an argument and returns the string back with its first and last 4 characters swapped when invoked.
  * NOTE: Return empty string if the given string does not have 8 or more characters.
@@ -123,8 +170,9 @@ console.log("Task-9\n");
     swap4(" ")                          -> ""
     swap4("Apple")                      -> ""
  */
+console.log("Task-9\n");
 
-console.log("Task-10\n");
+
 /**
  * Write a function names as swapFirstLastWord() which takes a string word as an argument and returns the string back with its first and last words swapped when invoked.
  * NOTE: Return empty string if the given string does not have 2 or more words.
@@ -136,3 +184,4 @@ console.log("Task-10\n");
     swapFirstLastWord("Hello")              -> ""
     swapFirstLastWord("Hello ")              -> ""
  */
+console.log("Task-10\n");
