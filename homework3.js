@@ -14,7 +14,7 @@
 console.log("Task-1\n");
 Array.from({length: 2}).forEach((_, index) => {
    const randomNums = Array.from({length: 3}, () => Math.floor(Math.random() * 100 + 1));
-   const randomAverage = randomNums.reduce((x, y) => x + y) / randomNums.length
+   const randomAverage = randomNums.reduce((x, y) => x + y) / randomNums.length;
    
    console.log(`Test data ${index +1}:\n${randomNums.join(`, `)}\n`);
    console.log(`Expected Output ${index+1}:\n${randomAverage >= 50 ? true : false}\n`);
@@ -49,7 +49,7 @@ Array.from({length: 3}).forEach((_, index) => {
    const uniqueVal = new Set(randomNums).size
    
    console.log(`Test data ${index+1}:\n${randomNums.join(`, `)}\n`);
-   console.log(`Expected Output ${index+1}`)
+   console.log(`Expected Output ${index+1}`);
    console.log(`${uniqueVal === 1 ? `TRIPLE MATCH` : uniqueVal === 2 ? `DOUBLE MATCH` : `NO MATCH`}\n`);
 })
 
