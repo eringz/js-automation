@@ -136,6 +136,8 @@ const lastWord = word => {
    return splitWords[splitWords.length-1];
 }
 
+console.log("Examples:")
+
 testWords = ["Hello World", "I like JavaScript", "Hello", "", " "];
 testWords.map(word => {console.log(`lastWord("${word}") -> ${lastWord(word)}`)});
 
@@ -156,6 +158,8 @@ const firstLastWord = word => {
    return splitWords.length === 0 ? "" : splitWords[0] + splitWords[splitWords.length-1];
 }
 
+console.log("Examples:")
+
 testWords = ["Hello World", "I like JavaScript", "Hello", "", " "];
 testWords.map(word => {console.log(`firstLastWord("${word}") -> ${firstLastWord(word)}`)});
 
@@ -171,8 +175,16 @@ testWords.map(word => {console.log(`firstLastWord("${word}") -> ${firstLastWord(
     startVowel(" ")                     -> false
     startVowel("123")                   -> false
  */
-console.log("Task-8\n");
+console.log("\nTask-8\n");
 
+const startVowel = word => {
+   if (!word || word.trim() === "") return false;
+
+   return "aeiou".includes(word[0].toLowerCase());
+}
+
+testWords = ["Hello", "Apple", "Orange", "", " ", "123"];
+testWords.map(word => {console.log(`startVowel("${word}") -> ${startVowel(word)}`)});
 
 /**
  * Write a function names as swap4() which takes a string word as an argument and returns the string back with its first and last 4 characters swapped when invoked.
@@ -185,8 +197,16 @@ console.log("Task-8\n");
     swap4(" ")                          -> ""
     swap4("Apple")                      -> ""
  */
-console.log("Task-9\n");
+console.log("\nTask-9\n");
 
+const swap4 = word => {
+   if (word.length < 8) return "";
+
+   return word.slice(-4) + word.slice(4, -4) + word.slice(0,4);
+}
+
+testWords = ["abc", "JavaScript", "techGlobal", "", " ", "Apple"];
+testWords.map(word => {console.log(`swap4("${word}") -> ${swap4(word)}`)});
 
 /**
  * Write a function names as swapFirstLastWord() which takes a string word as an argument and returns the string back with its first and last words swapped when invoked.
@@ -199,4 +219,22 @@ console.log("Task-9\n");
     swapFirstLastWord("Hello")              -> ""
     swapFirstLastWord("Hello ")              -> ""
  */
-console.log("Task-10\n");
+console.log("\nTask-10\n");
+
+const swapFirstLastWord = (str) => {
+  const words = str.trim().split(" ").filter(w => w !== "");
+
+  if (words.length < 2) return "";
+
+  // Swap first and last
+  const first = words[0];
+  const last = words[words.length - 1];
+
+  words[0] = last;
+  words[words.length - 1] = first;
+
+  return words.join(" ");
+}
+
+testWords = ["Hello World", "I like JavaScript", "foo bar foo bar", "", "Hello", "Hello "];
+testWords.map(word => {console.log(`swapFirstLastWord("${word}") -> ${swapFirstLastWord(word)}`)});
