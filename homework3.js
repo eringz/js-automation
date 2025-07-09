@@ -131,6 +131,13 @@ testWords.map(word => {console.log(`firstWord("${word}") -> ${firstWord(word)}`)
  */
 console.log("\nTask-6\n");
 
+const lastWord = word => {
+   const splitWords = word.trim().split(" ");
+   return splitWords[splitWords.length-1];
+}
+
+testWords = ["Hello World", "I like JavaScript", "Hello", "", " "];
+testWords.map(word => {console.log(`lastWord("${word}") -> ${lastWord(word)}`)});
 
 /**
  * Write a function named as firstlastWord() which takes a string word as an argument and returns the first and last words from the given string when invoked.
@@ -142,7 +149,15 @@ console.log("\nTask-6\n");
     firstLastWord("")                   -> ""
     firstLastWord(" ")                  -> ""
  */
-console.log("Task-7\n");
+console.log("\nTask-7\n");
+
+const firstLastWord = word => {
+   const splitWords = word.trim().split(" ").filter(w => w!== "");
+   return splitWords.length === 0 ? "" : splitWords[0] + splitWords[splitWords.length-1];
+}
+
+testWords = ["Hello World", "I like JavaScript", "Hello", "", " "];
+testWords.map(word => {console.log(`firstLastWord("${word}") -> ${firstLastWord(word)}`)});
 
 
 /**
