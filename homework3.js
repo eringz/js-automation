@@ -66,9 +66,7 @@ Array.from({length: 3}).forEach((_, index) => {
  */
 console.log("Task-3\n");
 
-const hasA = word => {
-   return word.toLowerCase().includes("a");
-};
+const hasA = word => word.toLowerCase().includes("a");
 
 console.log("Examples:");
 
@@ -88,9 +86,7 @@ testWords.map(word => {console.log(`hasA("${word}") -> ${hasA(word)}`)});
  */
 console.log("\nTask-4\n");
 
-const doubleOrTripleWord = word => {
-    return word.length % 2 === 0 ? word.repeat(3) : word.repeat(2);
-}
+const doubleOrTripleWord = word => word.length % 2 === 0 ? word.repeat(3) : word.repeat(2);
 
 console.log("Examples:");
 
@@ -109,10 +105,7 @@ testWords.map(word => {console.log(`doubleOrTripleWord("${word}") -> ${doubleOrT
  */
 console.log("\nTask-5\n");
 
-const firstWord = word => {
-   const splitWords = word.trim().split(" ");
-   return splitWords[0];
-}
+const firstWord = word => word.trim().split(" ")[0];
 
 console.log("Examples:");
 
@@ -131,10 +124,7 @@ testWords.map(word => {console.log(`firstWord("${word}") -> ${firstWord(word)}`)
  */
 console.log("\nTask-6\n");
 
-const lastWord = word => {
-   const splitWords = word.trim().split(" ");
-   return splitWords[splitWords.length-1];
-}
+const lastWord = word => word.trim().split(" ").slice(-1);
 
 console.log("Examples:")
 
@@ -177,11 +167,7 @@ testWords.map(word => {console.log(`firstLastWord("${word}") -> ${firstLastWord(
  */
 console.log("\nTask-8\n");
 
-const startVowel = word => {
-   if (!word || word.trim() === "") return false;
-
-   return "aeiou".includes(word[0].toLowerCase());
-}
+const startVowel = word => (!word || word.trim() === "") ? false : "aeiou".includes(word[0].toLowerCase());
 
 testWords = ["Hello", "Apple", "Orange", "", " ", "123"];
 testWords.map(word => {console.log(`startVowel("${word}") -> ${startVowel(word)}`)});
@@ -199,11 +185,7 @@ testWords.map(word => {console.log(`startVowel("${word}") -> ${startVowel(word)}
  */
 console.log("\nTask-9\n");
 
-const swap4 = word => {
-   if (word.length < 8) return "";
-
-   return word.slice(-4) + word.slice(4, -4) + word.slice(0,4);
-}
+const swap4 = word => (word.length < 8) ? "" : word.slice(-4) + word.slice(4, -4) + word.slice(0, 4);
 
 testWords = ["abc", "JavaScript", "techGlobal", "", " ", "Apple"];
 testWords.map(word => {console.log(`swap4("${word}") -> ${swap4(word)}`)});
