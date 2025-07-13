@@ -120,7 +120,6 @@ console.log(`\nTask-6\n`);
 const randomNumber = (start = 1, end = 10) => Math.floor(Math.random() * end) + start;
 const sequence = (start, end = 1) => Array.from({length: Math.abs(end - start) + 1}, (_, x) => start + x * (start <= end ? 1 : -1));
 const factorial = n => sequence(n, 1).reduce((product, val) => product * val, 1);
-
 const num = randomNumber();
 
 console.log(`${num}! = ${sequence(num, 1).join(" x ")} = ${factorial(num)}`);
