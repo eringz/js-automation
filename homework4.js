@@ -14,8 +14,14 @@
  */
 console.log(`Task-1\n`);
 
+let MAX_NUMBER = 100;
+
+for (let i = 1; i <= MAX_NUMBER; i++) {
+  if ( i % 7 === 0) console.log(i);
+}
+
 /**
- * Write a program that outputs all the numbers that are divisible by both 2 and 3 starting from 1 to 50 ( bot inclusive).
+ * Write a program that outputs all the numbers that are divisible by both 2 and 3 starting from 1 to 50 ( both inclusive).
  * Expected Output:
     6
     12
@@ -27,6 +33,16 @@ console.log(`Task-1\n`);
     48
  */
 console.log(`\nTask-2\n`);
+
+MAX_NUMBER = 50;
+let i = 1;
+
+while (i < MAX_NUMBER) {
+  if (i % 2 === 0 && i % 3 === 0) console.log(i);
+  i++;
+}
+
+
 
 /**
  * Write a program that outputs all the numbers that are divisible by 5 starting from 100 to 50 (both inclusive).
@@ -43,6 +59,12 @@ console.log(`\nTask-2\n`);
  */
 console.log(`\nTask-3\n`);
 
+MAX_NUMBER = 100;
+let MIN_NUMBER = 50;
+
+[...Array(MAX_NUMBER - MIN_NUMBER + 1 )].map((_, i) => MAX_NUMBER - i).filter(x => x % 5 === 0).forEach(x => console.log(x));
+
+
 /**
  * Write a program that outputs the squares of all numbers starting from 0 to 7 (both inclusive).
  * Expected Output: 
@@ -57,6 +79,12 @@ console.log(`\nTask-3\n`);
  */
 console.log(`\nTask-4\n`);
 
+MIN_NUMBER = 0;
+MAX_NUMBER = 7;
+
+console.log(`Expected Output: `);
+[...Array(MAX_NUMBER - MIN_NUMBER)].map((_, x) => console.log(`The square of ${x} is ${Math.pow(x, 2)}`));
+
 /**
  * Write a program that finds sum of the numbers starting from 1 to 10 (both inclusive).
  * Calculation => 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10
@@ -65,6 +93,17 @@ console.log(`\nTask-4\n`);
    55
  */
 console.log(`\nTask-5\n`);
+MIN_NUMBER = 1;
+MAX_NUMBER = 10;
+let total = 0;
+
+while (MIN_NUMBER <= MAX_NUMBER) {
+  total += MIN_NUMBER;
+  MIN_NUMBER++;
+}
+
+console.log(`Expected Output:\n${total}`);
+
 
 /**
  * Write a program generates a random number between 1 and 10 (both inclusive).
@@ -77,6 +116,14 @@ console.log(`\nTask-5\n`);
    0! (by convention) is defined as 1
  */
 console.log(`\nTask-6\n`);
+
+const randomNumber = (start = 1, end = 10) => Math.floor(Math.random() * end) + start;
+const sequence = (start, end = 1) => Array.from({length: Math.abs(end - start) + 1}, (_, x) => start + x * (start <= end ? 1 : -1));
+const factorial = n => sequence(n, 1).reduce((product, val) => product * val, 1);
+
+const num = randomNumber();
+
+console.log(`${num}! = ${sequence(num, 1).join(" x ")} = ${factorial(num)}`);
 
 /**
  * Write a program generates a random number between 1 and 100 (both inclusive).
@@ -272,3 +319,4 @@ console.log(`\nTask-19\n`);
    fizzBuzz(9, 6)                -> "Fizz | 7 | 8 | Fizz"
  */
 console.log(`\nTask-20\n`);
+
