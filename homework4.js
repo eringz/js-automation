@@ -42,8 +42,6 @@ while (i < MAX_NUMBER) {
   i++;
 }
 
-
-
 /**
  * Write a program that outputs all the numbers that are divisible by 5 starting from 100 to 50 (both inclusive).
  * Expected Output:
@@ -134,6 +132,24 @@ console.log(`${num}! = ${sequence(num, 1).join(" x ")} = ${factorial(num)}`);
  */
 console.log(`\nTask-7\n`);
 
+const untilDivBy5 = () => {
+  let attempt = 0;
+  let num;
+
+  do {
+      num = randomNumber(1, 100);
+      attempt++;
+  } while (num % 5 !== 0) {
+    return {num, attempt};
+  }
+}
+
+const pluralize = n => n > 1 ? 'attempts' : 'attempt';
+const result = untilDivBy5();
+
+console.log(`The random number is (${result.num}) and it took (${result.attempt}) ${pluralize(result.attempt)} to generate it.`);
+
+
 /**
  * Create an array that stores countries below.
  * Germany, Argentina, Ukraine, Romania
@@ -145,6 +161,10 @@ console.log(`\nTask-7\n`);
    ['Argentina', 'Germany', 'Romania', 'Ukraine']
  */
 console.log(`\nTask-8\n`);
+const countries = ['Germany', 'Argentina', 'Ukraine', 'Romania'];
+
+console.log(`Expected Result:\n${countries}\n${countries.sort()}`);
+
 
 /**
  * Create a String array that stores cartoon dogs below 
@@ -160,6 +180,10 @@ console.log(`\nTask-8\n`);
  */
 console.log(`\nTask-9\n`);
 
+const cartoonDogs = ['Scooby Doo', 'Snoopy', 'Blue', 'Pluto', 'Dino', 'Sparky'];
+
+console.log(`Expected Result:\n[${cartoonDogs.join(', ')}]\n${cartoonDogs.includes('Pluto')}`);
+
 /**
  * Create an array that stores cartoon cats below.
  * Garfield, Tom, Sylvester, Azrael
@@ -173,6 +197,9 @@ console.log(`\nTask-9\n`);
    false
  */
 console.log(`\nTask-10\n`);
+const cartoonCats = ['Garfield', 'Tom', 'Sylvester', 'Azrael'];
+
+console.log(`Expected Result:\n[${cartoonCats.join(', ')}]`);
 
 /**
  * Create an array that stores numbers below
@@ -189,6 +216,10 @@ console.log(`\nTask-10\n`);
    15.75
  */
 console.log(`\nTask-11\n`);
+let arrayNum = [10.5, 20.75, 70, 80, 15, 75];
+
+console.log(`Expected Result:\n[${arrayNum}]`);
+arrayNum.forEach(x => console.log(x));
 
 /**
  * Create an array that stores objects below
@@ -196,13 +227,18 @@ console.log(`\nTask-11\n`);
  * THEN:
  * Output the entire array.
  * Output how many elements starts with 'B' or 'P', ignoring cases.
- * Output how manyu elements has 'book', or 'pen' partial strings, ignoring cases.
+ * Output how many elements has 'book', or 'pen' partial strings, ignoring cases.
  * Expected Result:
    ['Pen', 'notebook', 'Book', 'paper', 'bag', 'pencil', 'Ruler']
    Elements starting with 'B' or 'P' = 5
    Elements having 'book' or 'pen' = 4
  */
 console.log(`\nTask-12\n`);
+const objects = ['Pen', 'notebook', 'Book', 'paper', 'bag', 'pencil', 'Ruler'];
+   
+console.log(`Expected Result:\n[${objects.join(', ')}]`);
+console.log(`Elements starting with 'B' or 'P' = ${objects.filter(object => object[0].toUpperCase() === 'B' || object[0].toUpperCase() === 'P').length}`);
+console.log(`Elemnts having 'book' or 'pen = ${objects.filter(object => object.toLowerCase().includes('book') || object.toLowerCase().includes('pen')).length}`);
 
 /**
  * Create an array that stores numbers below.
@@ -219,6 +255,12 @@ console.log(`\nTask-12\n`);
    Elements that are 10 = 2
  */
 console.log(`\nTask-13\n`);
+arrayNum = [3, 5, 7, 10, 0, 20, 17, 10, 23, 56, 78];
+
+console.log(`Expected Result:\n[${arrayNum.join(', ')}]`);
+console.log(`Elements that are more than 10 = ${arrayNum.filter(x => x > 10).length}`);
+console.log(`Elements that are more than 10 = ${arrayNum.filter(x => x < 10).length}`);
+console.log(`Elements that are more than 10 = ${arrayNum.filter(x => x === 10).length}`);
 
 /**
  * Create 2 arrays that stores numbers below.
@@ -233,6 +275,12 @@ console.log(`\nTask-13\n`);
    3rd array is = [9, 8, 67, 1, 2]
  */
 console.log(`\nTask-14\n`);
+const firstArray = [5, 8, 13, 1, 2], secondArray = [9, 3, 67, 1, 0];
+
+console.log('Expected Result');
+console.log(`1st array is = [${firstArray.join(', ')}]`);
+console.log(`2nd array is = [${secondArray.join(', ')}]`);
+console.log(`3rd array is = [${firstArray.map((val, index) => Math.max(val, secondArray[index])).join(', ')}]`);
 
 /**
  * Write a function named as firstDuplicate() which takes an array argument and returns the frist duplicated number in the array when invoked.
@@ -246,6 +294,15 @@ console.log(`\nTask-14\n`);
    firstDuplicate(['foo', 'abc', '123', 'bar'])       -> -1
  */
 console.log(`\nTask-15\n`);
+const firstDuplicate = array => { const seen = new Set(); return array.find(item => seen.has(item) || !seen.add(item)) ?? -1; };
+
+console.log('Examples:');
+console.log(`firstDuplicate([3,  7, 10, 0, 3, 10])  -> ${firstDuplicate([3,  7, 10, 0, 3, 10])}`);
+console.log(`firstDuplicate([5, 7, 7, 0 ,5, 10])  -> ${firstDuplicate([5, 7, 7, 0 ,5, 10])}`);
+console.log(`firstDuplicate([5, '5', 3, 7, 4])  -> ${firstDuplicate([5, '5', 3, 7, 4])}`);
+console.log(`firstDuplicate([123, 'abc', '123', 3, 'abc'])  -> ${firstDuplicate([123, 'abc', '123', 3, 'abc'])}`);
+console.log(`firstDuplicate([1, 2, 3])  -> ${firstDuplicate([1, 2, 3])}`);
+console.log(`firstDuplicate(['foo', 'abc', '123', 'bar'])  -> ${firstDuplicate(['foo', 'abc', '123', 'bar'])}`);
 
 /**
  * Write a function names as getDuplicated() which takes an array argument and return all the duplicated elements in the array when invoked.
@@ -259,7 +316,20 @@ console.log(`\nTask-15\n`);
    getDuplicats(['foo', '12', 12, 'bar', 'a'])                          -> []
  */
 console.log(`\nTask-16\n`);
+const getDuplicates = array => {
+  const seen = new Set();
+  const duplicates = new Set();
+  array.forEach(item => {
+    if (seen.has(item)) duplicates.add(item);
+    else seen.add(item);
+  });
+  return [...duplicates];
+};
 
+console.log(getDuplicates([0, -4, -7, 0, 5, 10, 45, -7, 0])); 
+console.log(getDuplicates([1, 2, 5, 0, 7])); 
+console.log(getDuplicates(['A', 'foo', '12', 12, 'bar', 'a', 'a', 'foo'])); 
+console.log(getDuplicates(['foo', '12', 12, 'bar', 'a'])); // -> []
 /**
  * Write a function named as reverseStringWords() which takes a string as an argument and returns string back with each word seperately reversed when invoked.
  * NOTE: Make your code dynamic that works for any string. Make sure you consider extra spaces before and ater words in the given string.
@@ -271,6 +341,14 @@ console.log(`\nTask-16\n`);
    reverseStringWords(" ")                      -> ""
  */
 console.log(`\nTask-17\n`);
+const reverseStringWords = str =>
+  str.trim() === '' ? '' : str.trim().split(/\s+/).map(word => word.split('').reverse().join('')).join(' ');
+
+console.log(reverseStringWords("Hello World"));
+console.log(reverseStringWords("I like JavaScript")); 
+console.log(reverseStringWords("Hello")); 
+console.log(reverseStringWords("")); 
+console.log(reverseStringWords(" ")); 
 
 /**
  * Write a function names as getEvens() which takes 2 number arguments and 
@@ -286,6 +364,15 @@ console.log(`\nTask-17\n`);
    getEvens(3, 3)   -> []
  */
 console.log(`\nTask-18\n`);
+const getEvens = (a, b) => {
+  const [start, end] = [Math.min(a, b), Math.max(a, b)];
+  return Array.from({ length: end - start + 1 }, (_, i) => i + start).filter(n => n % 2 === 0);
+};
+
+console.log(getEvens(2, 7)); 
+console.log(getEvens(17, 5)); 
+console.log(getEvens(4, 4)); 
+console.log(getEvens(3, 3)); 
 
 /**
  * Write a function names as getMultipleOf5() which takes 2 number 
@@ -299,6 +386,17 @@ console.log(`\nTask-18\n`);
    getMultipleOf5(2, 4)        -> []
  */
 console.log(`\nTask-19\n`);
+const getMultipleOf5 = (a, b) => {
+  const [start, end] = [Math.min(a, b), Math.max(a, b)];
+  const result = Array.from({ length: end - start + 1 }, (_, i) => i + start)
+                      .filter(n => n % 5 === 0);
+  return a <= b ? result : result.reverse();
+};
+
+console.log(getMultipleOf5(3, 17)); 
+console.log(getMultipleOf5(23, 5)); 
+console.log(getMultipleOf5(5, 5)); 
+console.log(getMultipleOf5(2, 4)); 
 
 /**
  * Write a function names as fizzBuzz() which takes 2 numbers and 
@@ -318,4 +416,15 @@ console.log(`\nTask-19\n`);
    fizzBuzz(9, 6)                -> "Fizz | 7 | 8 | Fizz"
  */
 console.log(`\nTask-20\n`);
+const fizzBuzz = (a, b) => {
+  const [start, end] = [Math.min(a, b), Math.max(a, b)];
+  return Array.from({ length: end - start + 1 }, (_, i) => {
+    const n = i + start;
+    return n % 15 === 0 ? 'FizzBuzz' : n % 3 === 0 ? 'Fizz' : n % 5 === 0 ? 'Buzz' : n;
+  }).join(' | ');
+};
+
+console.log(fizzBuzz(13, 18)); 
+console.log(fizzBuzz(5, 5)); 
+console.log(fizzBuzz(9, 6)); 
 
