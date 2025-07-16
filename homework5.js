@@ -137,10 +137,17 @@ console.log(`isPalindrome("") -> ${isPalindrome("")}`);
  * NOTE: Be careful about the extra whitespaces before and after the array element
  * Examples:
     countMultipleWords(["foo", "", " ", "foo bar", "    foo"])      -> 1    
-    countMultipleWords(["foo, "bar", "foobar", "    foo "])         -> 0    
-    countMultipleWords(["foo, "bar", "foobar", "    foo "])         -> 4    
+    countMultipleWords(["foo", "bar", "foobar", "    foo "])         -> 0    
+    countMultipleWords(["f o o", "b a r", "foo bar", "    foo bar "])         -> 4    
+    countMultipleWords([]) -> 0;
  */
 console.log(`\nTask-8\n`);
+const countMultipleWords = arr => arr.filter(str => str.trim().split(' ').filter(w => w !== '').length > 1).length;
+
+console.log(`countMultipleWords(["foo", "", " ", "foo bar", "    foo"]) -> ${countMultipleWords(["foo", "", " ", "foo bar", "    foo"])}`);
+console.log(`countMultipleWords(["foo", "bar", "foobar", "    foo "]) -> ${countMultipleWords(["foo", "bar", "foobar", "    foo "]) }`);
+console.log(`countMultipleWords(["f o o", "b a r", "foo bar", "    foo bar "]) -> ${countMultipleWords(["f o o", "b a r", "foo bar", "    foo bar "])}`);
+console.log(`countMultipleWords([]) -> ${countMultipleWords([])}`);
 
 /**
  * Write a function names as count3OrLess() which takes a string word as an
@@ -153,6 +160,13 @@ console.log(`\nTask-8\n`);
     count3OrLess("")                                        -> 0
  */
 console.log(`\nTask-9\n`);
+const count30OrLess = str => str.split(" ").filter(word => word && word.length <= 3).length;
+
+console.log(`count30OrLess("Hello") -> ${count30OrLess("Hello")}`);
+console.log(`count30OrLess("Hi John") -> ${count30OrLess("Hi John")}`);
+console.log(`count30OrLess("JavaScript is fun") -> ${count30OrLess("JavaScript is fun")}`);
+console.log(`count30OrLess("My name is John Doe") -> ${count30OrLess("My name is John Doe")}`);
+console.log(`count30OrLess("") -> ${count30OrLess("")}`);
 
 /**
  * Write a function names as isPrime() which takes a number as an
@@ -171,6 +185,19 @@ console.log(`\nTask-9\n`);
     isPrime(1)          -> false
  */
 console.log(`\nTask-10\n`);
+const isPrime = num => num < 2 ? false : (() => {
+   for (let i = 2; i < num; i++) {
+      if (num % i === 0) return false;
+   }
+   return true;
+})();
+
+console.log(`isPrime(5) -> ${isPrime(5)}`);
+console.log(`isPrime(2) -> ${isPrime(2)}`);
+console.log(`isPrime(29) -> ${isPrime(29)}`);
+console.log(`isPrime(-5) -> ${isPrime(-5)}`);
+console.log(`isPrime(0) -> ${isPrime(0)}`);
+console.log(`isPrime(1) -> ${isPrime(1)}`);
 
 /**
  * Write a function named add() which takes two array of numbers as argument
@@ -182,6 +209,19 @@ console.log(`\nTask-10\n`);
     add([-5, 6, -3, 11], [5, -6, 3, -11])                       -> [0, 0, 0, 0]
  */
 console.log(`\nTask-11\n`);
+const add = (arr1, arr2) => {
+   let maxLength = Math.max(arr1.length, arr2.length);
+   let newArr = [];
+
+   for (let i = 0; i < maxLength; i++) {
+      newArr.push((arr1[i] || 0) + (arr2[i] || 0));
+   }
+   return newArr.join(", ");
+}
+
+console.log(`add([3,0, 0, 7, 5, 10], [6, 3, 2]) -> [${add([3,0, 0, 7, 5, 10], [6, 3, 2])}]`);
+console.log(`add([10, 3, 6, 3, 2], [6, 8, 3, 0, 0, 7, 5, 10, 34]) -> [${add([10, 3, 6, 3, 2], [6, 8, 3, 0, 0, 7, 5, 10, 34])}]`);
+console.log(`add([-5, 6, -3, 11], [5, -6, 3, -11]) -> [${add([-5, 6, -3, 11], [5, -6, 3, -11])}]`);
 
 /**
  * Write a function names as removeExtraSpaces() which takes a string word as 
@@ -193,6 +233,7 @@ console.log(`\nTask-11\n`);
     removeExtraSpaces("")                               -> ""
  */
 console.log(`\nTask-12\n`);
+
 
 /**
  * Write a function names findClosestTo10() which takes an array of numbers as
