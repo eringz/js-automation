@@ -23,6 +23,11 @@ console.log(`countPos([0, -1, -2, -3]) -> ${countPos([0, -1, -2, -3])}`)
     countA("Cypress")                                   -> 0
  */
 console.log(`\nTask-2\n`);
+const countA = str => [...str].filter(c => c.toLowerCase() === 'a').length;
+
+console.log(`countA("TechGlobal is a QA bootcamp") -> ${countA("TechGlobal is a QA bootcamp")}`);
+console.log(`countA("QA stands for Quality Assurance) -> ${countA("QA stands for Quality Assurance")}`);
+console.log(`countA("Cypress") -> ${countA("Cypress")}`);
 
 /**
  * Write a function names as countVowels() which takes a string word as an 
@@ -35,6 +40,12 @@ console.log(`\nTask-2\n`);
     countVowels("")                                 -> 0
  */
 console.log(`\nTask-3\n`);
+const countVowels = str => [...str].filter(c => 'aeiou'.toLowerCase().includes(c)).length;
+
+console.log(`countVowels("Hello") -> ${countVowels("Hello")}`);
+console.log(`countVowels("Hello World") -> ${countVowels("Hello World")}`);
+console.log(`countVowels("JavaScript is fun") -> ${countVowels("JavaScript is fun")}`);
+console.log(`countVowels("") -> ${countVowels("")}`);
 
 /**
  * Write a function names as countConsonants() which takes a string word as an 
@@ -47,6 +58,12 @@ console.log(`\nTask-3\n`);
     countConsonants("")                             -> 0
  */
 console.log(`\nTask-4\n`);
+const countConsonants = str => [...str.toLowerCase()].filter(c => c >= 'a' && c <= 'z' && !'aeiou'.includes(c)).length;
+
+console.log(`countConsonants("Hello") -> ${countConsonants("Hello")}`);
+console.log(`countConsonants("Hello World") -> ${countConsonants("Hello World")}`);
+console.log(`countConsonants("JavaScript is fun") -> ${countConsonants("JavaScript is fun")}`);
+console.log(`countConsonants("") -> ${countConsonants("")}`);
 
 /**
  * Write a function names countWords() which takes a string 
