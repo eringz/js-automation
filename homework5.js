@@ -75,6 +75,11 @@ console.log(`countConsonants("") -> ${countConsonants("")}`);
     countWords(" 1 2 3 4")                                      -> 4
  */
 console.log(`\nTask-5\n`);
+const countWords = str => str.trim().split(" ").length;
+
+console.log(`countWords("    Javascript is fun   ") -> ${countWords("    Javascript is fun   ")}`);
+console.log(`countWords("Cypress is an UI automation tool.   ")  -> ${countWords("Cypress is an UI automation tool.   ")}`)
+console.log(`countWords(" 1 2 3 4") -> ${countWords(" 1 2 3 4")}`);
 
 /**
  * Write a function named as factorial() which takes a number as an 
@@ -89,6 +94,12 @@ console.log(`\nTask-5\n`);
     factorial(1)                -> 1
  */
 console.log(`\nTask-6\n`);
+const factorial = num => num === 0 ? 1 : Array.from({length: num}, (_, i) => i + 1).reduce((x, y) => x * y);
+
+console.log(`factorial(5) -> ${factorial(5)}`);
+console.log(`factorial(4) -> ${factorial(4)}`);
+console.log(`factorial(0) -> ${factorial(0)}`);
+console.log(`factorial(1) -> ${factorial(1)}`);
 
 /**
  * Write a function names as isPalindrome() which takes a string word as an 
@@ -108,6 +119,16 @@ console.log(`\nTask-6\n`);
     isPalindrome("")                           -> true
  */
 console.log(`\nTask-7\n`);
+const isPalindrome = str => str.toLowerCase() === [...str.toLowerCase()].reverse().join("");
+
+console.log(`isPalindrome("Hello") -> ${isPalindrome("Hello")}`);
+console.log(`isPalindrome("Kayak") -> ${isPalindrome("Kayak")}`);
+console.log(`isPalindrome("civic") -> ${isPalindrome("civic")}`);
+console.log(`isPalindrome("abba") -> ${isPalindrome("abba")}`);
+console.log(`isPalindrome("ab a") -> ${isPalindrome("ab a")}`);
+console.log(`isPalindrome("123454321") -> ${isPalindrome("123454321")}`);
+console.log(`isPalindrome("A") -> ${isPalindrome("A")}`);
+console.log(`isPalindrome("") -> ${isPalindrome("")}`);
 
 /**
  * Write a function names as countMultipleWords() which takes an array as an 
