@@ -14,9 +14,9 @@
  */
 console.log(`Task-1\n`);
 
-let MAX_NUMBER = 100;
+let maxNum = 100;
 
-for (let i = 1; i <= MAX_NUMBER; i++) {
+for (let i = 1; i <= maxNum; i++) {
   if ( i % 7 === 0) console.log(i);
 }
 
@@ -34,10 +34,10 @@ for (let i = 1; i <= MAX_NUMBER; i++) {
  */
 console.log(`\nTask-2\n`);
 
-MAX_NUMBER = 50;
+maxNum = 50;
 let i = 1;
 
-while (i < MAX_NUMBER) {
+while (i < maxNum) {
   if (i % 2 === 0 && i % 3 === 0) console.log(i);
   i++;
 }
@@ -57,10 +57,10 @@ while (i < MAX_NUMBER) {
  */
 console.log(`\nTask-3\n`);
 
-MAX_NUMBER = 100;
-let MIN_NUMBER = 50;
+maxNum = 100;
+let minNum = 50;
 
-[...Array(MAX_NUMBER - MIN_NUMBER + 1 )].map((_, i) => MAX_NUMBER - i).filter(x => x % 5 === 0).forEach(x => console.log(x));
+[...Array(maxNum - minNum + 1 )].map((_, i) => maxNum - i).filter(x => x % 5 === 0).forEach(x => console.log(x));
 
 
 /**
@@ -77,11 +77,11 @@ let MIN_NUMBER = 50;
  */
 console.log(`\nTask-4\n`);
 
-MIN_NUMBER = 0;
-MAX_NUMBER = 7;
+minNum = 0;
+maxNum = 7;
 
 console.log(`Expected Output: `);
-[...Array(MAX_NUMBER - MIN_NUMBER)].map((_, x) => console.log(`The square of ${x} is ${Math.pow(x, 2)}`));
+[...Array(maxNum - minNum)].map((_, x) => console.log(`The square of ${x} is ${Math.pow(x, 2)}`));
 
 /**
  * Write a program that finds sum of the numbers starting from 1 to 10 (both inclusive).
@@ -91,13 +91,13 @@ console.log(`Expected Output: `);
    55
  */
 console.log(`\nTask-5\n`);
-MIN_NUMBER = 1;
-MAX_NUMBER = 10;
+minNum = 1;
+maxNum = 10;
 let total = 0;
 
-while (MIN_NUMBER <= MAX_NUMBER) {
-  total += MIN_NUMBER;
-  MIN_NUMBER++;
+while (minNum <= maxNum) {
+  total += minNum;
+  minNum++;
 }
 
 console.log(`Expected Output:\n${total}`);

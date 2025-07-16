@@ -1,11 +1,17 @@
 /**
  * Write a function named countPos() which takes an array of numbers as an argument and returns how many elemenst are positive when invoked.
  * Examples:
- * counPos([-45, 0, 0, 34, 5, 67])                  -> 3
- * counPos([-23, -4, 0, 2, 5, 90, 123])             -> 4
- * counPos([0, -1, -2, -3])                         -> 0
+ * countPos([-45, 0, 0, 34, 5, 67])                  -> 3
+ * countPos([-23, -4, 0, 2, 5, 90, 123])             -> 4
+ * countPos([0, -1, -2, -3])                         -> 0
  */
 console.log(`Task-1\n`);
+
+const countPos = array => array.filter(x => x > 0).length;
+
+console.log(`countPos([-45, 0, 0, 34, 5, 67]) -> ${countPos([-45, 0, 0, 34, 5, 67])}`);
+console.log(`countPos([-23, -4, 0, 2, 5, 90, 123]) -> ${countPos([-23, -4, 0, 2, 5, 90, 123])}`)
+console.log(`countPos([0, -1, -2, -3]) -> ${countPos([0, -1, -2, -3])}`)
 
 /**
  * Write a function names countA() which takes a string argument and
