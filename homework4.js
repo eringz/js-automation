@@ -316,20 +316,21 @@ console.log(`firstDuplicate(['foo', 'abc', '123', 'bar'])  -> ${firstDuplicate([
    getDuplicats(['foo', '12', 12, 'bar', 'a'])                          -> []
  */
 console.log(`\nTask-16\n`);
-const getDuplicates = array => {
-  const seen = new Set();
-  const duplicates = new Set();
-  array.forEach(item => {
-    if (seen.has(item)) duplicates.add(item);
-    else seen.add(item);
-  });
-  return [...duplicates];
+const getDuplicates = arr => {
+  const duplicates = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr.indexOf(arr[i]) !== i && !duplicates.includes(arr[i])) {
+      duplicates.push(arr[i]);
+    }
+  }
+  return duplicates.join(", ");
 };
 
-console.log(getDuplicates([0, -4, -7, 0, 5, 10, 45, -7, 0])); 
-console.log(getDuplicates([1, 2, 5, 0, 7])); 
-console.log(getDuplicates(['A', 'foo', '12', 12, 'bar', 'a', 'a', 'foo'])); 
-console.log(getDuplicates(['foo', '12', 12, 'bar', 'a'])); // -> []
+console.log(`getDuplicates([0, -4, -7, 0, 5, 10, 45, -7, 0])) -> [${getDuplicates([0, -4, -7, 0, 5, 10, 45, -7, 0])}]`); 
+console.log(`getDuplicates([1, 2, 5, 0, 7]) -> [${getDuplicates([1, 2, 5, 0, 7])}]`); 
+console.log(`getDuplicates(['A', 'foo', '12', 12, 'bar', 'a', 'a', 'foo']) -> [${getDuplicates(['A', 'foo', '12', 12, 'bar', 'a', 'a', 'foo'])}]`); 
+console.log(`getDuplicates(['foo', '12', 12, 'bar', 'a']) ->  [${getDuplicates(['foo', '12', 12, 'bar', 'a'])}]`); 
+
 /**
  * Write a function named as reverseStringWords() which takes a string as an argument and returns string back with each word seperately reversed when invoked.
  * NOTE: Make your code dynamic that works for any string. Make sure you consider extra spaces before and ater words in the given string.
@@ -341,14 +342,28 @@ console.log(getDuplicates(['foo', '12', 12, 'bar', 'a'])); // -> []
    reverseStringWords(" ")                      -> ""
  */
 console.log(`\nTask-17\n`);
-const reverseStringWords = str =>
-  str.trim() === '' ? '' : str.trim().split(/\s+/).map(word => word.split('').reverse().join('')).join(' ');
+const reverseStringWords  = str => {
+  let word = '', result = '', isWord = false;
 
-console.log(reverseStringWords("Hello World"));
-console.log(reverseStringWords("I like JavaScript")); 
-console.log(reverseStringWords("Hello")); 
-console.log(reverseStringWords("")); 
-console.log(reverseStringWords(" ")); 
+  for (const char of str.trim() + ' ') {
+    if (char !== ' ') {
+      word = char + word;
+      isWord = true;
+    } else if (isWord) {
+      result += word + ' ';
+      word = '';
+      isWord = false;
+    }
+  }
+
+  return result.trim();
+}
+
+console.log(`reverseStringWords("Hello World") -> ${reverseStringWords("Hello World")}`);
+console.log(`reverseStringWords("I like JavaScript") -> ${reverseStringWords("I like JavaScript")}`); 
+console.log(`reverseStringWords("Hello") -> ${reverseStringWords("Hello")}`); 
+console.log(`reverseStringWords("") -> ${reverseStringWords("")}`); 
+console.log(`reverseStringWords(" ") -> ${reverseStringWords(" ")}`); 
 
 /**
  * Write a function names as getEvens() which takes 2 number arguments and 
@@ -366,13 +381,13 @@ console.log(reverseStringWords(" "));
 console.log(`\nTask-18\n`);
 const getEvens = (a, b) => {
   const [start, end] = [Math.min(a, b), Math.max(a, b)];
-  return Array.from({ length: end - start + 1 }, (_, i) => i + start).filter(n => n % 2 === 0);
+  return Array.from({ length: end - start + 1 }, (_, i) => i + start).filter(n => n % 2 === 0).join(", ");
 };
 
-console.log(getEvens(2, 7)); 
-console.log(getEvens(17, 5)); 
-console.log(getEvens(4, 4)); 
-console.log(getEvens(3, 3)); 
+console.log(`getEvens(2, 7) -> [${getEvens(2, 7)}]`); 
+console.log(`getEvens(17, 5) -> [${getEvens(17, 5)}]`); 
+console.log(`getEvens(4, 4) -> [${getEvens(4, 4)}]`); 
+console.log(`getEvens(3, 3) -> [${getEvens(3, 3)}]`); 
 
 /**
  * Write a function names as getMultipleOf5() which takes 2 number 
@@ -390,13 +405,13 @@ const getMultipleOf5 = (a, b) => {
   const [start, end] = [Math.min(a, b), Math.max(a, b)];
   const result = Array.from({ length: end - start + 1 }, (_, i) => i + start)
                       .filter(n => n % 5 === 0);
-  return a <= b ? result : result.reverse();
+  return a <= b ? result : result.reverse().join(", ");
 };
 
-console.log(getMultipleOf5(3, 17)); 
-console.log(getMultipleOf5(23, 5)); 
-console.log(getMultipleOf5(5, 5)); 
-console.log(getMultipleOf5(2, 4)); 
+console.log(`getMultipleOf5(3, 17) -> [${getMultipleOf5(3, 17)}]`); 
+console.log(`getMultipleOf5(23, 5) -> [${getMultipleOf5(23, 5)}]`); 
+console.log(`getMultipleOf5(5, 5) -> [${getMultipleOf5(5, 5)}]`); 
+console.log(`getMultipleOf5(2, 4) -> [${getMultipleOf5(2, 4)}]`); 
 
 /**
  * Write a function names as fizzBuzz() which takes 2 numbers and 
@@ -424,7 +439,8 @@ const fizzBuzz = (a, b) => {
   }).join(' | ');
 };
 
-console.log(fizzBuzz(13, 18)); 
-console.log(fizzBuzz(5, 5)); 
-console.log(fizzBuzz(9, 6)); 
+console.log(`fizzBuzz(13, 18) -> ${fizzBuzz(13, 18)}`); 
+console.log(`fizzBuzz(12, 5) -> ${fizzBuzz(12, 5)}`)
+console.log(`fizzBuzz(5, 5) -> ${fizzBuzz(5, 5)}`); 
+console.log(`fizzBuzz(9, 6) -> ${fizzBuzz(9, 6)}`); 
 
