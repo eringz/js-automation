@@ -233,7 +233,12 @@ console.log(`add([-5, 6, -3, 11], [5, -6, 3, -11]) -> [${add([-5, 6, -3, 11], [5
     removeExtraSpaces("")                               -> ""
  */
 console.log(`\nTask-12\n`);
+const removeExtraSpaces = str => str.trim();
 
+console.log(`removeExtraSpaces("Hello") -> "${removeExtraSpaces("Hello")}"`);
+console.log(`removeExtraSpaces(" Hello World  ") -> "${removeExtraSpaces(" Hello World  ")}"`);
+console.log(`removeExtraSpaces("  JavaScript is   fun") -> "${removeExtraSpaces("  JavaScript is   fun")}"`);
+console.log(`removeExtraSpaces("") -> "${removeExtraSpaces("")}"`);
 
 /**
  * Write a function names findClosestTo10() which takes an array of numbers as
@@ -247,6 +252,14 @@ console.log(`\nTask-12\n`);
     findClosestTo10([0, -1, -2])                    -> 0
  */
 console.log(`\nTask-13\n`);
+const findClosestTo10 = arr => arr.filter(num => num !== 10).reduce((current, closest) => 
+   Math.abs(current - 10) < Math.abs(closest - 10) || (Math.abs(current - 10) === Math.abs(closest - 10) && current < closest)
+   ? current : closest
+);
+
+console.log(`findClosestTo10([10, -13, 5, 70, 15, 57]) -> ${findClosestTo10([10, -13, 5, 70, 15, 57])}`);
+console.log(`findClosestTo10([10, -13, 8, 12, 15, -20]) -> ${findClosestTo10([10, -13, 8, 12, 15, -20])}`);
+console.log(`findClosestTo10([0, -1, -2]) -> ${findClosestTo10([0, -1, -2])}`);
 
 /**
  * Write a function names as isEmailValid() which takes a string email as an
@@ -268,6 +281,18 @@ console.log(`\nTask-13\n`);
     isEmailValid("johndoe@gmail.com")                   -> true
  */
 console.log(`\nTask-14\n`);
+const isEmailValid = email => {
+   const emailParts = email.split("@");
+   return emailParts.length === 2 && emailParts[0].length >= 2 && emailParts[1].length >= 6 && emailParts[1].endsWith(".com");
+}
+
+console.log(`isEmailValid("") -> ${isEmailValid("")}`);
+console.log(`isEmailValid("@gmail.com") -> ${isEmailValid("@gmail.com")}`);
+console.log(`isEmailValid("johndoe@yahoo") -> ${isEmailValid("johndoe@yahoo")}`);
+console.log(`isEmailValid("johndoe@.com") -> ${isEmailValid("johndoe@.com")}`);
+console.log(`isEmailValid("a@outlook.com") -> ${isEmailValid("a@outlook.com")}`);
+console.log(`isEmailValid("johndoe@a.com") -> ${isEmailValid("johndoe@a.com")}`);
+console.log(`isEmailValid("johndoe@gmail.com") -> ${isEmailValid("johndoe@gmail.com")}`);
 
 /**
  * Write a function names isPasswordValid which takes a string email as an 
@@ -287,3 +312,26 @@ console.log(`\nTask-14\n`);
     isPasswordValid("Test1234#")                            -> true
  */
 console.log(`\nTask-15\n`);
+const isPasswordValid = password => {
+  if (password.length < 8 || password.length > 16 || password.includes(' ')) return false;
+
+  let upper = false, lower = false, digit = false, special = false;
+
+  [...password].forEach(c => {
+    if (c >= 'A' && c <= 'Z') upper = true;
+    else if (c >= 'a' && c <= 'z') lower = true;
+    else if (c >= '0' && c <= '9') digit = true;
+    else special = true;
+  });
+
+  return upper && lower && digit && special;
+};
+
+console.log(`isPasswordValid("") -> ${isPasswordValid("")}`);
+console.log(`isPasswordValid("abcd") -> ${isPasswordValid("abcd")}`);
+console.log(`isPasswordValid("abcd1234") -> ${isPasswordValid("abcd1234")}`);
+console.log(`isPasswordValid("Abcd1234") -> ${isPasswordValid("Abcd1234")}`);
+console.log(`isPasswordValid("Chicago12345US!#$%") -> ${isPasswordValid("Chicago12345US!#$%")}`);
+console.log(`isPasswordValid("Abcd1234$") -> ${isPasswordValid("Abcd1234$")}`);
+console.log(`isPasswordValid("Chicago123$") -> ${isPasswordValid("Chicago123$")}`);
+console.log(`isPasswordValid("Test1234#") -> ${isPasswordValid("Test1234#")}`);
