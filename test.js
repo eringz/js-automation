@@ -1,14 +1,33 @@
-const numbers = [-5, 0, 5, 10, 23, -10];
+const generateBigArray = (size = 1) => Array.from({length: size}, () => Math.floor(Math.random() * size));
 
-// Find all negative numbers
-const negative = numbers.filter(number => number < 0).join(", ");
+const secondMinLoop = arr => {
+    if (arr.length === 1) return arr[0];
 
-console.log(`Negative number: ${negative}.`);
+    let min = Infinity, secondMin = Infinity;
 
-const names = ["John", "Jone", "Alex", "Jane", "Max"];
+    for (num of arr) {
+        if (num < min) {
+            secondMin = min;
+            min = num
+        } else if (num < secondMin && num > min) {
+            secondMin = num;
+        }
+    }
+    return secondMin;
+}
 
-// Find the first name that has 4 letters
-const firstNameWith4Letters = names.find(name => name.length === 4);
+const secondMinOneLiner = arr => arr.length === 1 ? arr[0] : Math.min(...arr.filter(n => n !== Math.min(...arr)));
 
-console.log(firstNameWith4Letters);
-console.log(names.findIndex(c => c.includes("a")));
+
+const bigArray = generateBigArray();
+
+console.time("Loop-based");
+const loopResult = secondMinLoop(bigArray);
+console.timeEnd("Loop-based");
+
+console.time("One-liner");
+const oneLinerResult = secondMinOneLiner(bigArray);
+console.timeEnd("One-liner");
+
+console.log(`Loop result: ${loopResult}`);
+console.log(`One-liner result: ${oneLinerResult}`);
