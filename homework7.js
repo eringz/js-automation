@@ -1,195 +1,172 @@
 /* Task 1 
 Requirement:
- Write a function named noSpace() which takes a string as argument and 
- returns a new string with all the spaces removed.
+ Write a function named hasUpperCase() which takes a string argument and return true 
+ if there is an uppercase letter and false otherwise.
 Examples:
- noSpace("")                    -> ""
- noSpace("Javascript")          -> "Javascript"
- noSpace("    Hello   ")        -> "Hello"
- noSpace(" Hello World   ")     -> "HelloWorld”
- noSpace("Tech Global")         -> "TechGlobal"
-*/
+ hasUpperCase("javascript") -> false
+ hasUpperCase("John")       -> true
+ hasUpperCase("$125.0")     -> false
+ hasUpperCase("")           -> false
+ */
+console.time('Task 1 Duration');
+console.log ('--- Task 1 ---');
+let hasUpperCase = str => {
+    for (let c of str) {
+        if (c >= "A" && c <= "z") return true;
+    }
+    return false;
+}
+
+// hasUpperCase = str => /[A-Z]/.test(str);
+
+let cases = ["javascript", "John", "$125.0", ""];
+cases.forEach(str => console.log(`${`hassUpperCase("${str}")`.padEnd(30)} -> ${hasUpperCase(str)}`));
+
+console.timeEnd('Task 1 Duration');
 
 /* Task 2 
 Requirement:
-Write a function named replaceFirstLast() which takes a string argument and 
-returns a new string with the first and last characters replaced.
- NOTE: If the length is less than 2, return an empty string.
- NOTE: Ignore extra spaces before and after the string.
+ Write a function named noDigit() which takes a string argument and returns a new string 
+ with all digits removed from the original string​.
 Examples:
- replaceFirstLast("")            ->  ""
- replaceFirstLast("Hello")       ->  "oellH"
- replaceFirstLast("Tech Global") -> "lech GlobaT"
- replaceFirstLast("A")           -> ""
- replaceFirstLast("    A      ") -> ""
+ noDigit("")                     -> ""
+ noDigit("Javascript")           -> "Javascript"
+ noDigit("123Hello")             -> "Hello"
+ noDigit("123Hello World149") 	-> "Hello World”
+ noDigit("123Tech456Global149") 	-> "TechGlobal"
 */
-console.log('--- Task 2 ---'); 
+console.time('Task 2 Duration');
+console.log ('\n--- Task 2 ---');
 
+let noDigit = str => {
+    let result = '';
+    for (let c of str) {
+        if (c < '0' || c > '9') result += c;
+    }
+    return result;
+}
+
+// noDigit = str => str.replace(/[0-9]/g, '');
+
+cases = ["", "Javascript", "123Hello", "123Hello World149", "123Tech456Global149"];
+cases.forEach(str => console.log(`${`noDigit("${str}")`.padEnd(30)} -> "${noDigit(str)}"`));
+console.timeEnd('Task 2 Duration');
 
 /* Task 3
 Requirement:
-Write a function named hasVowel() which takes a string argument and 
-returns true if the string has a vowel, returns false if the string doesn’t 
-contain any vowel letter.
- NOTE: Vowels are = a, e, o, u, i.
- NOTE: Ignore upper/lower cases.
+ Write a function named noVowel() which takes a string argument and returns a new string 
+ with all vowels removed from the original string​.
 Examples:
- hasVowel("")             -> false
- hasVowel("Javascript")   -> true
- hasVowel("Tech Global")  -> true
- hasVowel("1234")         -> false
- hasVowel("ABC")          -> true
+ noVowel("TechGlobal")  -> "TchGlbl"
+ noVowel("AEOxyz")      -> "xyz"
+ noVowel("Javascript")  -> "Jvscrpt"
+ noVowel("")            -> ""
+ noVowel("125$")        -> "125$"
 */
-console.log('--- Task 3 ---'); 
+console.time('Task 3 Duration');
+console.log ('\n--- Task 3 ---');
+let noVowel = str => {
+    let result = '';
+    for (let c of str) {
+        if (!'aeiou'.includes(c.toLowerCase())) result += c;
+    }
+    return result;
+}
+
+// noVowel = str => str.replace(/[aeiou]/gi,'');
+
+cases = ["TechGlobal", "AEOxyz", "Javascript", "", "125$"];
+cases.forEach(str => console.log(`${`noVowel("${str}")`.padEnd(30)} -> "${noVowel(str)}"`));
+console.timeEnd('Task 3 Duration');
 
 /* Task 4
 Requirement:
- Write a function named checkAge() which takes a number argument to be 
- considered as the yearOfBirth and returns a message below based on the given year.
- If the age is less than 16, then print "AGE IS NOT ALLOWED”"
- If the age is 16 or more, then print "AGE IS ALLOWED"
- If the age is more than 120 or a future year, print "AGE IS NOT VALID"
- NOTE: Consider someone born in 2013 is 10 years old as of 2023.
+ Write a function named no13() which takes an array of numbers as argument and return 
+ a new array with all 13s replaced with 0s. ​
 Examples:
- checkAge(2015) -> "AGE IS NOT ALLOWED"
- checkAge(2007) -> "AGE IS ALLOWED"
- checkAge(2050) -> "AGE IS NOT VALID"
- checkAge(1920) -> "AGE IS ALLOWED"
- checkAge(1800) -> "AGE IS NOT VALID"
-*/
-console.log('--- Task 4 ---'); 
+ no13([1, 2, 3 ,4])          -> [1, 2, 3 ,4] 
+ no13([13, 2, 3])            -> [0, 2, 3]
+ no13([13, 13, 13 , 13, 13]) -> [0, 0, 0, 0, 0]
+ no13([])                    -> []
 
+*/
+console.time('Task 4 Duration');
+console.log ('\n--- Task 4 ---');
+// let no13 = numArr => {
+//     let result = [];
+//     for (num of numArr) {
+//         if (num === 13) {
+//             num = 0;
+//         };
+//         result.push(num);
+//     }
+//     return result;
+// };
+
+let no13 = numArr => numArr.map(n => n === 13 ? 0 : n);
+
+cases = [[1, 2, 3 ,4], [13, 2, 3], [13, 13, 13 , 13, 13], []];
+cases.forEach(numArr => console.log(`${`no13([${numArr}])`.padEnd(30)} -> [${no13(numArr)}]`));
+console.timeEnd('Task 4 Duration');
 
 /* Task 5
 Requirement:
- Write a function named averageOfEdges() which takes three number arguments 
- and will return average of min and max numbers​.
+ Write a function named middleInt() which takes three number arguments and return the middle number. ​
 Examples:
- averageOfEdges(0, 0, 0)     -> 0
- averageOfEdges(0, 0, 6)     -> 3
- averageOfEdges(-2, -2, 10)  -> 4
- averageOfEdges(-3, 15, -3)  -> 6
- averageOfEdges(10, 13, 20)  -> 15
-*/
-console.log('--- Task 5 ---'); 
+ middleInt(1, 2, 2)     -> 2
+ middleInt(5, 5, 8)     -> 5
+ middleInt(5, 3, 5)     -> 5
+ middleInt(1, 1, 1)     -> 1
+ middleInt(-1, 25, 10)  -> 10
 
+*/
+console.time('Task 5 Duration');
+console.log ('\n--- Task 5 ---');
+let middleInt = (a, b, c) => {
+    let nums = [a, b, c].sort((x, y) => x - y);
+    return nums[1];
+};
+
+cases = [[1, 2, 2], [5, 5, 8], [5, 3, 5], [1, 1, 1], [-1, 25, 10]];
+cases.forEach(nums => console.log(`${`middleInt(${nums.join(', ')})`.padEnd(30)} -> ${middleInt(...nums)}`));
+console.timeEnd('Task 5 Duration');
 
 /* Task 6
 Requirement:
- Write a function named noA() which takes an array of strings as argument and 
- will return a new array with all elements starting with "A" or "a" replaced with "###".
+ Write a function named sumOfDigits() which takes a string argument and returns sum 
+ of all digits from the original string. ​
 Examples:
- noA(["javascript", "hello", "123", "xyz"]) 	->  ["javascript", "hello", "123", "xyz"]
- noA(["apple", "123", "ABC", "javascript"]) 	->  ["###", "123", "###", "javascript"]
- noA(["apple", "abc", "ABC", "Alex", "A"]) 	    -> ["###", "###", "###", "###", "###"]
+ sumOfDigits("Javascript")       -> 0
+ sumOfDigits("John’s age is 29") -> 11
+ sumOfDigits("$125.0")           -> 8
+ sumOfDigits("")                 -> 0
+
 */
-console.log('--- Task 6 ---'); 
+console.log ('\n--- Task 6 ---');
+
 
 
 /* Task 7
 Requirement:
- Write a function named no3and5() which takes an array of integer numbers as argument and 
- will return a new array with elements replaced by conditions below.
- If element can be divided by 5, replace it with 99​
- If element can be divided by 3, replace it with 100​
- If element can be divided by both 3 and 5, replace it with 101
+ Write a function named arrFactorial() which takes an array of numbers as argument and  
+return the array with every number replaced with their factorials.
 Examples:
- no3and5([7, 4, 11, 23, 17])        -> [7, 4, 11, 23, 17]
- no3and5([3, 4, 5, 6])              -> [100, 4, 99, 100]
- no3and5([10, 11, 12, 13, 14, 15]) 	-> [99, 11, 100, 13, 14, 101]
+ arrFactorial([1, 2, 3 ,4])    -> [1, 2, 6, 24]
+ arrFactorial([0, 5])          -> [1,120]
+ arrFactorial([5 , 0, 6])      -> [120, 1, 720]
+ arrFactorial([])              -> []
 */
-console.log('--- Task 7 ---'); 
+console.log ('\n--- Task 7 ---');
 
 
 /* Task 8
 Requirement:
- Write a function named countPrimes() which takes an array of integer numbers 
- as argument and will return the number of the prime numbers in the given array.
- NOTE: Prime number is a number that can be divided only by 1 and itself​.
- NOTE: Negative numbers cannot be prime​.
- Examples: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37 etc.​
-NOTE: Smallest prime number is 2.
+ Write a function named categorizeCharacters() which takes a string word as argument and return an array 
+ as letters at index of 0, digits at index of 1 and specials at index of 2. 
 Examples:
- countPrimes([-10, -3, 0, 1])      -> 0
- countPrimes([7, 4, 11, 23, 17])   -> 4
- countPrimes([41, 53, 19, 47, 67]) -> 5
-*/
-console.log('--- Task 8 ---'); 
-
-
-/* Task 9
-Requirement:
- Write a function named removeDuplicates() which takes an array argument and 
- returns a new array with all the duplicates removed.
-Examples:
- removeDuplicates([10, 20, 35, 20, 35, 60, 70, 60])          -> [10, 20, 35, 60, 70]
- removeDuplicates([1, 2, 5, 2, 3])                           -> [1, 2, 5, 3]
- removeDuplicates([0, -1, -2, -2, -1])                       -> [0, -1, -2]
- removeDuplicates(["abc", "xyz", "123", "ab", "abc", "ABC"]) -> ["abc", "xyz", "123", "ab", "ABC"]
- removeDuplicates(["1", "2", "3", "2", "3"])                 -> ["1", "2", "3"]
-*/
-console.log('--- Task 9 ---'); 
-
-
-
-
-/* Task 10
-Requirement: 
- Write a method named isDateFormatValid() that takes a string as an argument and 
- returns true if the given date is valid or returns false otherwise.
- Expected Format: nn/nn/nnnn
- So, it must be presented as <2digits>/<2digits>/<4digits>
-Examples:
- isDateFormatValid("")             -> false
- isDateFormatValid("15/30/2020")   -> false
- isDateFormatValid("10-30-2020 ")  -> false
- isDateFormatValid("10.30.2020")   -> false
- isDateFormatValid("5/30/2020")    -> false
- isDateFormatValid("05/30/2020 ")  -> true
- isDateFormatValid("10/2/2020")    -> false
- isDateFormatValid("10/02/2020 ")  -> true
+ categorizeCharacters("1234") 	-> [ '' , '1234', '' ] 
+ categorizeCharacters("abc123$#%") 	-> [ 'abc', '123', '$#%' ]
+ categorizeCharacters("12ab$%3c%") 	-> [ 'abc', '123', '$%%' ]
 
 */
-console.log('--- Task 10 ---'); 
-
-
-
-/* Task 11
-Requirement: 
- Write a method named secondMax() takes an array argument and returns the second max number from the array.
- NOTE: Assume that you will not be given empty array and if the array has only 1 element, it will be returned as second max number.
- NOTE: Be careful when there is multiple max numbers.
-Examples:
- secondMax([7, 4, 4, 4, 23, 23, 23]) -> 7
- secondMax([3, 4, 5, 6])             -> 5
- secondMax([10])                     -> 10
-*/
-console.log('--- Task 11 ---'); 
-
-
-/* Task 12
-Requirement: 
- Write a method named secondMin() takes an array argument and returns the second min number from the array.
- NOTE: Assume that you will not be given empty array and if the array has only 1 element, it will be returned as second min number.
- NOTE: Be careful when there is multiple min numbers.
-Examples:
- secondMax([7, 4, 4, 4, 23, 23, 23]) -> 7
- secondMax([3, 4, 5, 6])             -> 4
- secondMax([10])                     -> 10
-
-*/
-console.log('--- Task 12 ---'); 
-
-
-/* Task 13
-Requirement: 
- Write a method named mostRepeated() takes an array argument and returns the most counted element from the array.
- NOTE: Assume that you will not be given empty array and the count of one element will always be more than the others.
-Examples:
- mostRepeated([4, 7, 4, 4, 4, 23, 23, 23])                             -> 4
- mostRepeated(["pen", "pencil", "pen", "123", "abc", "pen", "pencil"]) -> "pen"
- mostRepeated([10])                                                    -> 10
- mostRepeated(["TechGlobal"])                                          -> "TechGlobal"
-
-*/
-console.log('--- Task 13 ---'); 
+console.log ('\n--- Task 8 ---');
