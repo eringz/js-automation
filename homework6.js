@@ -10,7 +10,7 @@ Examples:
  noSpace("Tech Global")         -> "TechGlobal"
 */
 console.log('--- Task 1 ---');
-const noSpace = string => string.trim();
+const noSpace = string => string.replace(/\s/g,"");
 
 console.log(`noSpace("") -> "${noSpace("")}"`);
 console.log(`noSpace("Javascript") -> "${noSpace("Javascript")}"`);
@@ -117,7 +117,7 @@ Examples:
  noA(["apple", "abc", "ABC", "Alex", "A"]) 	    -> ["###", "###", "###", "###", "###"]
 */
 console.log('--- Task 6 ---'); 
-const noA = arr => arr.map(str => str[0]?.toLowerCase() === "a" ? "###" : str).join(", ");
+const noA = arr => arr.map(str => str[0]?.toLowerCase() === "a" ? "###" : str);
 
 console.log(`noA(["javascript", "hello", "123", "xyz"]) -> [${noA(["javascript", "hello", "123", "xyz"])}]`);
 console.log(`noA(["apple", "123", "ABC", "javascript"]) -> [${noA(["apple", "123", "ABC", "javascript"])}]`);
@@ -136,7 +136,7 @@ Examples:
  no3and5([10, 11, 12, 13, 14, 15]) 	-> [99, 11, 100, 13, 14, 101]
 */
 console.log('--- Task 7 ---'); 
-const no3and5 = arr => [...arr].map(x => x % 5 === 0 ? 99 : x % 3 === 0 ? 100 : x).join(", ");
+const no3and5 = arr => [...arr].map(x => x % 5 === 0 && x % 3 === 0 ? 101 : x % 5 === 0 ? 99 : x % 3 === 0 ? 100 : x);
 
 console.log(`no3and5([7, 4, 11, 23, 17]) -> [${no3and5([7, 4, 11, 23, 17])}]`);
 console.log(`no3and5([3, 4, 5, 6]) -> [${no3and5([3, 4, 5, 6])}]`);
